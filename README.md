@@ -1,15 +1,23 @@
 # TV Maze
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This web application integrates with the TVmaze Public REST API to provide users with information about TV shows. It's built using Next.js, TypeScript, and Tailwind CSS.
 
 ## ToC
 
 - [ToC](#toc)
 - [Get Started](#get-started)
+  - [Prerequisites](#prerequisites)
+  - [How to run](#how-to-run)
 - [Configuration and Localization](#configuration-and-localization)
 - [Technical Overview](#technical-overview)
 
 ## Get Started
+To run the application locally, follow these steps:
+
+### Prerequisites
+Make sure you have Node.js and npm installed on your machine.
+
+### How to run
 
 First, run the development server:
 
@@ -23,7 +31,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to view the application.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
