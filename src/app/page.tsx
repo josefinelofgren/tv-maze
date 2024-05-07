@@ -31,6 +31,7 @@ export default function Page() {
           data.map((item: any, index: number) => (
             <div key={index} className="relative">
               <Card
+                id={item.id}
                 title={item.name}
                 image={item.image}
                 genres={item.genres}

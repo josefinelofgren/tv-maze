@@ -1,11 +1,38 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import { saveAsFavorite, removeAsFavorite } from "@/utils/favorites";
+
 interface Props {
+  id: number;
   image: { medium: string | null; originial: string | null } | null;
   title: string;
   genres: [];
   length: number;
 }
 
-const Card = ({ image, title, genres, length }: Props) => {
+const Card = ({ id, image, title, genres, length }: Props) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const isAlreadyFavorite = favorites.some(
+      (item: { id: any }) => item.id === id
+    );
+    setIsFavorite(isAlreadyFavorite);
+  }, [id]);
+
+  const handleToggleFavorite = () => {
+    if (!isFavorite) {
+      saveAsFavorite(id);
+      setIsFavorite(true);
+    } else {
+      removeAsFavorite(id);
+      setIsFavorite(false);
+    }
+  };
+
   const defaultImage = "./../../assets/no-image.png";
 
   return (
@@ -17,6 +44,12 @@ const Card = ({ image, title, genres, length }: Props) => {
       />
       <div className="px-6 py-4 h-full flex flex-col justify-between">
         <div>
+          <div className="text-red-500">
+            <FontAwesomeIcon
+              onClick={handleToggleFavorite}
+              icon={isFavorite ? solidHeart : regularHeart}
+            />
+          </div>
           <div className="font-bold text-xl mb-2">{title}</div>
           <p className="text-gray-700 text-sm">{length} min</p>
           {genres && (

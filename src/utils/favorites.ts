@@ -1,22 +1,13 @@
-const saveAsFavorite = (showObject: any) => {
+export const saveAsFavorite = (showId: number) => {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-  const isAlreadyFavorite = favorites.some(
-    (item: { id: any }) => item.id === showObject.id
-  );
-
-  if (!isAlreadyFavorite) {
-    favorites.push(showObject);
-
+  if (!favorites.includes(showId)) {
+    favorites.push(showId);
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }
 };
 
-const removeAsFavorite = (showId: number) => {
+export const removeAsFavorite = (showId: number) => {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-
-  const updatedFavorites = favorites.filter(
-    (item: { id: number }) => item.id !== showId
-  );
-
+  const updatedFavorites = favorites.filter((id: number) => id !== showId);
   localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 };
