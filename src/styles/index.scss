@@ -1,0 +1,25 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+//mixin
+@import "./mixin/heading/";
+@import "./mixin/paragraph/";
+
+//typography
+@import "./typography/";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body-bg);
+  font-family: var(--font-family-base);
+  font-size: var(--html-font-size);
+  line-height: var(--html-line-height);
+  letter-spacing: var(--html-letter-spacing);
+  font-weight: var(--html-font-weight-regular);
+  margin: 0;
+  padding: 0;
+}

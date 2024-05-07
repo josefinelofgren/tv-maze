@@ -1,0 +1,158 @@
+:root {
+  // Breakpoints
+  --layout-max-width: 1600px;
+  --small-phone-max-width: 449px;
+  --phone-min-width: 360px;
+  --phone-max-width: 679px;
+  --tablet-min-width: 680px;
+  --tablet-max-width: 1023px;
+  --desktop-min-width: 1024px;
+
+  --tablet-portrait-min-width: var(--tablet-min-width);
+  --tablet-landscape-min-width: 840px;
+  --desktop-medium-min-width: 1280px;
+  --desktop-large-min-width: 1440px;
+
+  --header-mobile-width: var(--phone-max-width);
+  --header-nav-min-width: var(--tablet-landscape-min-width);
+  --text-max-width: 1040px;
+
+  --grid-extra-padding: 0px;
+  --layout-grid-max-width: calc(
+    var(--layout-max-width) + 84px + var(--grid-extra-padding)
+  );
+
+  // Base
+  --font-family-base: "Inter", sans-serif;
+  --html-font-size: 16px;
+  --html-line-height: 24px;
+  --html-letter-spacing: 0;
+  --html-font-weight-light: 250;
+  --html-font-weight-regular: 250;
+  --html-font-weight-bold: 650;
+
+  // Colors
+  --black: #31261d;
+  --white: #fbf9f6;
+  --blue: #1e44cb;
+
+  --primary: var(--black);
+  --secondary: var(--blue);
+  --third: var(--white);
+
+  --item1: #7a7a7a;
+  --item2: "bg-gray-50";
+  --item3: #c3b5a7;
+
+  --success: #04582f;
+  --info: --secondary;
+  --warning: #872e2e;
+  --error: #872e2e;
+  --offer: #80534e;
+
+  --tone1: #e4d4c4;
+  --tone2: #f2e9db;
+  --tone3: #f8f2ec;
+  --tone4: #9ca9bd;
+
+  --drawer-animation: var(--tone1);
+
+  // Base
+  --body-bg: var(--tone2);
+  --body-color: var(--black);
+
+  // Header
+  --header-height: 74px;
+  --header-height-desktop: 82px;
+  --header-padding: 13px 0;
+  --header-padding-desktop: 17px 0;
+  --header-color: var(--primary);
+  --header-background-color: var(--body-bg);
+  --header-box-shadow: none;
+  --header-transition: transform 0.325s ease;
+  --header-logo-height-mobile: 20px;
+  --header-logo-width-mobile: 150px;
+  --header-logo-height: 20px;
+  --header-logo-width: 150px;
+  --header-logo-margin: 0;
+  --header-font-family: var(--font-family-base);
+  --header-font-weight: 500;
+  --header-link-color: var(--black);
+  --header-link-transition: opacity 100ms ease;
+  --header-link-font-size: 17px;
+  --header-link-decoration: none;
+  --header-link-transform: none;
+  --header-link-letter-spacing: 0;
+  --header-link-opacity-hover: 0.72;
+  --header-border-bottom: 1px solid var(--item3);
+  --header-icon-color: var(--primary);
+  --header-icon-size: 19px;
+  --header-button-font-size: 12px;
+  --header-button-font-size-desktop: 16px;
+  --header-button-padding-desktop: 14px 16px;
+  --header-button-line-height: 16px;
+  --header-button-font-weight: 500;
+  --header-button-text-transform: none;
+  --header-button-letter-spacing: 0;
+  --header-content-top-position: 22px;
+  --header-content-top-position-tablet: 24px;
+  --header-content-top-position-desktop: 24px;
+
+  // Headings
+  --font-family-heading: "Reckless", serif;
+  --heading-color: var(--black);
+  --heading-letter-spacing: 0;
+  --heading-font-weight: 350;
+  --html-font-weight: 250;
+
+  --heading-1-mobile-fs: 36px;
+  --heading-1-mobile-lh: 40px;
+  --heading-1-desktop-fs: 66px;
+  --heading-1-desktop-lh: 71px;
+
+  --heading-2-mobile-fs: 30px;
+  --heading-2-mobile-lh: 36px;
+  --heading-2-desktop-fs: 46px;
+  --heading-2-desktop-lh: 50px;
+
+  --heading-3-mobile-fs: 26px;
+  --heading-3-mobile-lh: 30px;
+  --heading-3-desktop-fs: 32px;
+  --heading-3-desktop-lh: 38px;
+
+  --heading-4-mobile-fs: 18px;
+  --heading-4-mobile-lh: 24px;
+  --heading-4-desktop-fs: 20px;
+  --heading-4-desktop-lh: 26px;
+
+  --heading-5-mobile-fs: 16px;
+  --heading-5-mobile-lh: 22px;
+  --heading-5-desktop-fs: 18px;
+  --heading-5-desktop-lh: 24px;
+
+  --heading-6-mobile-fs: 16px;
+  --heading-6-mobile-lh: 22px;
+  --heading-6-desktop-fs: 16px;
+  --heading-6-desktop-lh: 22px;
+
+  // Preamble
+  --preamble-font-family: var(--font-family-base);
+  --preamble-font-weight: 250;
+  --preamble-mobile-font-size: 21px;
+  --preamble-mobile-line-height: 30px;
+  --preamble-desktop-font-size: 26px;
+  --preamble-desktop-line-height: 36px;
+
+  // Paragraph small
+  --p-small-font-weight: var(--html-font-weight);
+  --p-mobile-small-font-size: 13px;
+  --p-mobile-small-line-height: 18px;
+  --p-desktop-small-font-size: 14px;
+  --p-desktop-small-line-height: 19px;
+
+  // Icon
+  --icon-close-x: "\e910";
+  --icon-arrow-left: "\e907";
+  --icon-check: "\e90e";
+  --icon-search: "\e921";
+}
