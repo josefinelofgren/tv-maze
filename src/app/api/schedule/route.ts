@@ -11,8 +11,15 @@ export async function GET() {
     }
 
     const data = await res.json();
+    const filteredData = data.map((item: any) => ({
+      id: item.show.id,
+      name: item.show.name,
+      image: item.show.image,
+      length: item.show.runtime,
+      genres: [item.show.type, ...item.show.genres],
+    }));
 
-    return Response.json(data, { status: 200 });
+    return Response.json(filteredData, { status: 200 });
   } catch (error) {
     return Response.error();
   }

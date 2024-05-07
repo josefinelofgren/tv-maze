@@ -1,9 +1,10 @@
 "use client";
 
+import Card from "@/components/card/card";
 import { useEffect, useState } from "react";
 
 export default function Page() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -24,10 +25,20 @@ export default function Page() {
   }, []);
 
   return (
-    <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        schedule
-      </main>
-    </>
+    <div className="container mx-auto py-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {data &&
+          data.map((item: any, index: number) => (
+            <div key={index} className="relative">
+              <Card
+                title={item.name}
+                image={item.image}
+                genres={item.genres}
+                length={item.length}
+              />
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }

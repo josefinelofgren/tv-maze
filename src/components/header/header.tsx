@@ -1,20 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CountrySelector from "../country-selector/countrySelector";
 import Heading from "../heading/heading";
 import InputField from "../input-field/inputField";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-// import { getCountryCode } from "@/utils/getCountryCode";
 
 const Header = () => {
   const [searchActive, setSearchActive] = useState(false);
-
-  // useEffect(() => {
-  //   getCountryCode();
-  // }, []);
 
   const onClickSearch = () => {
     setSearchActive(!searchActive);

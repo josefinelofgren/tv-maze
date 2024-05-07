@@ -1,23 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const CountrySelector = () => {
   const [value, setValue] = useState("US");
-
-  useEffect(() => {
-    const countryCode = localStorage.getItem("countryCode");
-    if (countryCode) {
-      const countryExists = countries.find(
-        (country) => country.locale === countryCode
-      );
-      if (countryExists) {
-        setValue(countryCode);
-      }
-    } else {
-      setValue("US");
-    }
-  }, []);
 
   const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountryCode = event.target.value;
@@ -28,7 +14,6 @@ const CountrySelector = () => {
   const countries = [
     { locale: "GB", title: "United Kingdom" },
     { locale: "US", title: "USA" },
-    { locale: "SE", title: "Sweden" },
   ];
 
   return (
