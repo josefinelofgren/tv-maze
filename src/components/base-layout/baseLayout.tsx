@@ -9,7 +9,7 @@ const Layout = ({
   return (
     <ContextProvider>
       <Header />
-      <div className="flex min-h-screen flex-col items-center justify-between p-12">
+      <div className="relative flex min-h-screen flex-col items-center justify-between p-12">
         {children}
       </div>
     </ContextProvider>

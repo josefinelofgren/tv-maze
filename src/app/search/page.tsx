@@ -1,15 +1,16 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Grid from "@/components/grid/grid";
 import Shows from "@/components/shows/shows";
-import { Show } from "@/types/types";
+import { ShowDetails } from "@/types/types";
 import { useEffect, useState } from "react";
 
 export default function Page() {
-  const [shows, setShows] = useState<Show[]>([]);
+  const [shows, setShows] = useState<ShowDetails[]>([]);
   const [error, setError] = useState(false);
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     const query = searchParams.get("q");
@@ -28,6 +29,10 @@ export default function Page() {
     };
 
     fetchData();
+
+    if (query === "") {
+      router.push("/browse");
+    }
   }, [searchParams]);
 
   return (

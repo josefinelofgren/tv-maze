@@ -1,15 +1,19 @@
-export interface Card {
-  id: number;
-  image: { medium: string | null; originial: string | null } | null;
-  title: string;
-  genres: [];
-  length: number;
-}
-
-export interface Show {
+export interface ShowDetails {
   id: number;
   name: string;
-  image: Object | null;
+  image: { medium: string | null; original: string | null } | null;
   length: number;
   genres: [];
+}
+
+export interface ExtendedShowDetails {
+  id: number;
+  name: string;
+  image: { medium: string | null; original: string | null } | null;
+  language: string;
+  rating: number;
+  length: number;
+  genres: [];
+  summary: string;
+  premiered: string;
 }

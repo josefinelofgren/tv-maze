@@ -48,7 +48,7 @@ const Header = () => {
       <div className="header__container flex items-center justify-between">
         <div className="flex items-center space-x-10">
           <h6>TV Maze</h6>
-          <Link href="/" onClick={() => setSearchActive(!searchActive)}>
+          <Link href="/">
             <p className="text-sm">All shows</p>
           </Link>
         </div>

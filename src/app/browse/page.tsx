@@ -2,12 +2,12 @@
 
 import Grid from "@/components/grid/grid";
 import Shows from "@/components/shows/shows";
-import { Show } from "@/types/types";
+import { ShowDetails } from "@/types/types";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/context";
 
 export default function Page() {
-  const [shows, setShows] = useState<Show[]>([]);
+  const [shows, setShows] = useState<ShowDetails[]>([]);
   const [error, setError] = useState(false);
   const { countryCode, setCountryCode } = useContext(Context);
 
