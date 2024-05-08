@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CountrySelector from "../country-selector/countrySelector";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +12,7 @@ import Search from "../search/search";
 const Header = () => {
   const [searchActive, setSearchActive] = useState(false);
   const [favoritesCount, setFavoritesCount] = useState(0);
+  const searchRef = useRef(null);
 
   const { countFavorites, countryCode, setCountFavorites, setCountryCode } =
     useContext(Context);
@@ -19,7 +20,24 @@ const Header = () => {
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     setCountFavorites(favorites.length);
-  }, []);
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !(searchRef.current as unknown as HTMLElement).contains(
+          event.target as Node
+        )
+      ) {
+        setSearchActive(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setCountFavorites]);
 
   const onClickSearch = () => {
     setSearchActive(!searchActive);
@@ -30,20 +48,22 @@ const Header = () => {
       <div className="header__container flex items-center justify-between">
         <div className="flex items-center space-x-10">
           <h6>TV Maze</h6>
-          <Link href="/">
+          <Link href="/" onClick={() => setSearchActive(!searchActive)}>
             <p className="text-sm">All shows</p>
           </Link>
         </div>
         <div className="flex items-center space-x-4">
-          {searchActive ? (
-            <Search />
-          ) : (
-            <FontAwesomeIcon
-              onClick={onClickSearch}
-              icon={faSearch}
-              className="text-white-500 cursor-pointer text-xl"
-            />
-          )}
+          <div className="search" ref={searchRef}>
+            {searchActive ? (
+              <Search />
+            ) : (
+              <FontAwesomeIcon
+                onClick={onClickSearch}
+                icon={faSearch}
+                className="text-white-500 cursor-pointer text-xl"
+              />
+            )}
+          </div>
           <div className="relative">
             <Link href="/favorites">
               <FontAwesomeIcon

@@ -7,27 +7,20 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
-  const handleSearch = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log(searchValue);
-  };
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    console.log(searchValue);
-    router.push(`/search?q=${searchValue}`);
+    console.log(event.target.value);
+    router.push(`/search?q=${event.target.value}`);
   };
 
   return (
-    <form onSubmit={handleSearch}>
-      <InputField
-        placeholder="Search"
-        id="search"
-        icon={"faSearch"}
-        value={searchValue}
-        onChange={handleChange}
-      />
-    </form>
+    <InputField
+      placeholder="Search"
+      id="search"
+      icon={"faSearch"}
+      value={searchValue}
+      onChange={handleChange}
+    />
   );
 };
 
