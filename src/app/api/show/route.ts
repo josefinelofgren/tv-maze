@@ -2,56 +2,25 @@ export async function GET(req: any) {
   try {
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.searchParams);
-    const id = searchParams.get("id");
-    const episodesApiUrl = `https://api.tvmaze.com/shows/${id}/episodes`;
-    const showApiUrl = `https://api.tvmaze.com/shows/${id}`;
+    const country = searchParams.get("country");
+    const today = new Date().toISOString().slice(0, 10);
+    const apiUrl = `https://api.tvmaze.com/schedule?country=${country}&date=${today}`;
 
-    const [episodesResponse, showResponse] = await Promise.all([
-      fetch(episodesApiUrl),
-      fetch(showApiUrl),
-    ]);
+    const res = await fetch(apiUrl);
 
-    if (!episodesResponse.ok) {
-      throw new Error(
-        `Failed to fetch episodes data: ${episodesResponse.status} ${episodesResponse.statusText}`
-      );
+    if (!res.ok) {
+      throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
     }
 
-    if (!showResponse.ok) {
-      throw new Error(
-        `Failed to fetch show data: ${showResponse.status} ${showResponse.statusText}`
-      );
-    }
-
-    const episodesData = await episodesResponse.json();
-    const showData = await showResponse.json();
-
-    const filteredShowData = {
-      id: showData.id,
-      name: showData.name,
-      image: showData.image,
-      language: showData.language,
-      rating: showData.rating.average,
-      length: showData.runtime,
-      genres: [showData.type, ...showData.genres],
-      summary: showData.summary,
-      premiered: showData.premiered,
-    };
-
-    const filteredEpisodesData = episodesData.map((episodeData: any) => ({
-      id: episodeData.id,
-      name: episodeData.name,
-      image: episodeData.image,
-      season: episodeData.season,
-      number: episodeData.number,
+    const data = await res.json();
+    const filteredData = data.map((item: any) => ({
+      id: item.show.id,
+      name: item.show.name,
+      image: item.show.image,
+      genres: [item.show.type, ...item.show.genres],
     }));
 
-    console.log(filteredEpisodesData);
-
-    return Response.json(
-      { episodes: filteredEpisodesData, show: filteredShowData },
-      { status: 200 }
-    );
+    return Response.json(filteredData, { status: 200 });
   } catch (error) {
     return Response.error();
   }

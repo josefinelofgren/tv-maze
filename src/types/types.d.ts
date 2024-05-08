@@ -1,12 +1,11 @@
-export interface ShowDetails {
+export interface ShowDetailsType {
   id: number;
   name: string;
   image: { medium: string | null; original: string | null } | null;
-  length: number;
   genres: [];
 }
 
-export interface Show {
+export interface ShowType {
   id: number;
   name: string;
   image: { medium: string | null; original: string | null } | null;
@@ -18,7 +17,7 @@ export interface Show {
   premiered: string;
 }
 
-export interface Episode {
+export interface EpisodeType {
   id: number;
   name: string;
   image: { medium: string | null; original: string | null } | null;
@@ -27,9 +26,16 @@ export interface Episode {
   runtime: number;
 }
 
-export interface ExtendedShowDetails {
-  show: Show;
-  episodes: Episode[];
+export interface UpcomingEpisodesType {
+  id: number;
+  name: string;
+  image: { medium: string | null; original: string | null } | null;
+  number: number;
+  airdate: string;
+  airtime: string;
 }
 
-export interface ShowEpisodes {}
+export interface ExtendedShowDetailsType {
+  show: Show | null;
+  episodes: Episode[] | null;
+}

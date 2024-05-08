@@ -2,35 +2,26 @@
 
 import Grid from "@/components/grid/grid";
 import Shows from "@/components/shows/shows";
-import { ShowDetails } from "@/types/types";
+import { ShowDetailsType } from "@/types/types";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/context";
+import { getAllShows } from "@/utils/shows/getShows";
 
 export default function Page() {
-  const [shows, setShows] = useState<ShowDetails[]>([]);
+  const [shows, setShows] = useState<ShowDetailsType[]>([]);
   const [error, setError] = useState(false);
   const { countryCode, setCountryCode } = useContext(Context);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`/api/schedule/?country=${countryCode}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const responseData = await response.json();
-        setShows(responseData);
-      } catch (error) {
-        setError(true);
-      }
-    };
-
-    fetchData();
+    getAllShows(countryCode, setShows, setError);
   }, [countryCode, setCountryCode]);
 
   return (
-    <Grid>
-      <Shows shows={shows} />
-    </Grid>
+    <div>
+      <p className="font-bold text-md mb-2">All shows</p>
+      <Grid>
+        <Shows shows={shows} />
+      </Grid>
+    </div>
   );
 }

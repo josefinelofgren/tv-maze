@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { Episode, ExtendedShowDetails } from "@/types/types";
+import { EpisodeType } from "@/types/types";
 import Select from "../input-field/select";
+import defaultImage from "./../../assets/no-image.svg";
 
 interface Props {
-  episodes: Episode[];
+  episodes: EpisodeType[];
 }
 
 const Episodes = ({ episodes }: Props) => {
   interface EpisodesBySeason {
-    [season: number]: Episode[];
+    [season: number]: EpisodeType[];
   }
 
   const episodesBySeason = episodes.reduce(
-    (acc: EpisodesBySeason, episode: Episode) => {
+    (acc: EpisodesBySeason, episode: EpisodeType) => {
       if (!acc[episode.season]) {
         acc[episode.season] = [];
       }
@@ -55,21 +56,22 @@ const Episodes = ({ episodes }: Props) => {
         </div>
         {episodesBySeason[selectedSeason].map((episode) => (
           <div className="flex items-center mt-2 p-4 border-b" key={episode.id}>
-            <p className="text-lg mr-4" style={{ width: "50px" }}>
+            <p className="text-lg mr-6" style={{ width: "auto" }}>
               {episode.number}
             </p>
-            <img
-              className="mr-4 rounded"
-              style={{ width: "150px", height: "auto" }}
-              src={
-                episode.image && episode.image.original
-                  ? episode.image.original
-                  : episode.image && episode.image.medium
-                  ? episode.image.medium
-                  : ""
-              }
-              alt={episode.name}
-            />
+            <div className="mr-4" style={{ maxWidth: "140px" }}>
+              <img
+                className="rounded w-full object-cover h-auto"
+                src={
+                  episode.image && episode.image.original
+                    ? episode.image.original
+                    : episode.image && episode.image.medium
+                    ? episode.image.medium
+                    : defaultImage.src
+                }
+                alt={episode.name}
+              />
+            </div>
             <p className="text-sm font-bold flex-grow">{episode.name}</p>
           </div>
         ))}

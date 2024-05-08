@@ -11,7 +11,6 @@ import Search from "../search/search";
 
 const Header = () => {
   const [searchActive, setSearchActive] = useState(false);
-  const [favoritesCount, setFavoritesCount] = useState(0);
   const searchRef = useRef(null);
 
   const { countFavorites, countryCode, setCountFavorites, setCountryCode } =
@@ -47,7 +46,7 @@ const Header = () => {
     <header id="header" className={"header bg-gray-800 text-white p-4"}>
       <div className="header__container flex items-center justify-between">
         <div className="flex items-center space-x-10">
-          <h6>TV Maze</h6>
+          <p className="font-bold">TV Maze</p>
           <Link href="/">
             <p className="text-sm">All shows</p>
           </Link>

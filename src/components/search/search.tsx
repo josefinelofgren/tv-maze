@@ -9,7 +9,6 @@ const Search = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    console.log(event.target.value);
     router.push(`/search?q=${event.target.value}`);
   };
 
