@@ -1,21 +1,31 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CountrySelector from "../country-selector/countrySelector";
 import InputField from "../input-field/inputField";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
+import { Context } from "@/app/context/context";
 
-export interface Props {
-  countryCode: string;
-  setCountryCode: Dispatch<SetStateAction<string>>;
-}
-
-const Header = ({ countryCode, setCountryCode }: Props) => {
+const Header = () => {
   const [searchActive, setSearchActive] = useState(false);
   const [favoritesCount, setFavoritesCount] = useState(0);
+
+  const { countFavorites, countryCode, setCountFavorites, setCountryCode } =
+    useContext(Context);
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    setCountFavorites(favorites.length);
+  }, []);
 
   const onClickSearch = () => {
     setSearchActive(!searchActive);
@@ -47,9 +57,9 @@ const Header = ({ countryCode, setCountryCode }: Props) => {
                 className="text-white-500 cursor-pointer text-xl"
               />
             </Link>
-            {favoritesCount > 0 && (
+            {countFavorites > 0 && (
               <div className="absolute top-0 right-4 -mt-1 -mr-1 bg-red-500 bg-opacity-85 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                {favoritesCount}
+                {countFavorites}
               </div>
             )}
           </div>

@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { saveAsFavorite, removeAsFavorite } from "@/utils/favorites";
 import { Card as CardType } from "@/types/types";
+import { Context } from "@/app/context/context";
 
 const Card = ({ id, image, title, genres, length }: CardType) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { countFavorites, setCountFavorites } = useContext(Context);
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -23,9 +25,13 @@ const Card = ({ id, image, title, genres, length }: CardType) => {
     if (!isFavorite) {
       saveAsFavorite(showObject);
       setIsFavorite(true);
+      const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+      setCountFavorites(favorites.length);
     } else {
       removeAsFavorite(showObject);
       setIsFavorite(false);
+      const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+      setCountFavorites(favorites.length);
     }
   };
 
