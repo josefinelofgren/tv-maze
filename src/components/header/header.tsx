@@ -1,19 +1,13 @@
 "use client";
 
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CountrySelector from "../country-selector/countrySelector";
-import InputField from "../input-field/inputField";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
 import { Context } from "@/app/context/context";
+import Search from "../search/search";
 
 const Header = () => {
   const [searchActive, setSearchActive] = useState(false);
@@ -42,7 +36,7 @@ const Header = () => {
         </div>
         <div className="flex items-center space-x-4">
           {searchActive ? (
-            <InputField placeholder="search" id="search" icon={"faSearch"} />
+            <Search />
           ) : (
             <FontAwesomeIcon
               onClick={onClickSearch}

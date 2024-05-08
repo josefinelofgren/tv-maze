@@ -1,15 +1,16 @@
 "use client";
 
-import BaseLayout from "@/components/base-layout/baseLayout";
-import Grid from "@/components/grid/grid";
-import Schedule from "@/components/schedule/schedule";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default function Page() {
-  return (
-    <BaseLayout>
-      <Grid>
-        <Schedule />
-      </Grid>
-    </BaseLayout>
-  );
-}
+const Page = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/browse");
+  }, []);
+
+  return <></>;
+};
+
+export default Page;

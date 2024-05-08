@@ -1,24 +1,18 @@
-"use client";
-
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export interface Props {
   placeholder?: string;
+  value: string;
   id: string;
   icon?: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField = ({ placeholder, id, icon }: Props) => {
-  const [value, setValue] = useState("");
-
-  const onChange = (value: string) => {
-    setValue(value);
-  };
-
+const InputField = ({ placeholder, id, icon, value, onChange }: Props) => {
   return (
-    <div className={icon && "relative"}>
+    <div className={icon ? "relative" : ""}>
       <input
         id={id}
         name={id}
@@ -29,7 +23,7 @@ const InputField = ({ placeholder, id, icon }: Props) => {
         type="text"
         placeholder={placeholder}
         required
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
       />
       {icon === "faSearch" && (
         <FontAwesomeIcon

@@ -5,3 +5,11 @@ export interface Card {
   genres: [];
   length: number;
 }
+
+export interface Show {
+  id: number;
+  name: string;
+  image: Object | null;
+  length: number;
+  genres: [];
+}
