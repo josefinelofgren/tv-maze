@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "../card/card";
 import { ExtendedShowDetails, ShowDetails } from "@/types/types";
 import OverlayCard from "../card/overlayCard";
@@ -32,14 +32,26 @@ const Shows = ({ shows }: ShowsProps) => {
     fetchData(showId);
   };
 
+  useEffect(() => {
+    if (selectedShow) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedShow]);
+
   return (
     <>
       {selectedShow && (
-        <div className="fixed top-0 left-0 z-2 w-full h-full flex items-center justify-center">
+        <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center">
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-          <div className="fixed z-2">
+          <div className="max-w-[900px] max-h-[700px] mx-auto z-10 !important overflow-y-auto">
             <OverlayCard
-              show={selectedShow}
+              selectedShow={selectedShow}
               setSelectedShow={setSelectedShow}
             />
           </div>

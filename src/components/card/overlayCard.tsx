@@ -14,22 +14,24 @@ import {
   useState,
 } from "react";
 import { saveAsFavorite, removeAsFavorite } from "@/utils/favorites";
-import { ExtendedShowDetails } from "@/types/types";
+import { ExtendedShowDetails, ShowDetails } from "@/types/types";
 import { Context } from "@/app/context/context";
+import Episodes from "../episodes/episodes";
 
 interface CardProps {
-  show: ExtendedShowDetails;
+  selectedShow: ExtendedShowDetails;
   setSelectedShow: Dispatch<SetStateAction<ExtendedShowDetails | null>>;
 }
 
-const OverlayCard = ({ show, setSelectedShow }: CardProps) => {
+const OverlayCard = ({ selectedShow, setSelectedShow }: CardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { setCountFavorites } = useContext(Context);
+  const { show, episodes } = selectedShow;
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     const isAlreadyFavorite = favorites.some(
-      (item: ExtendedShowDetails) => item.id === show.id
+      (favorite: ShowDetails) => favorite.id === show.id
     );
 
     setIsFavorite(isAlreadyFavorite);
@@ -55,19 +57,17 @@ const OverlayCard = ({ show, setSelectedShow }: CardProps) => {
     setSelectedShow(null);
   };
 
-  const defaultImage = "./../../assets/no-image.png";
-
   return (
-    <div className="top-0 left-0 bg-white rounded">
-      <div className="w-auto flex items-center justify-center">
+    <div className="relative top-0 left-0 bg-white rounded overflow-y-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
         <div>
           <img
-            className="w-400"
+            className="w-auto"
             src={show.image && show.image.original ? show.image.original : ""}
             alt={show.name}
           />
         </div>
-        <div className="p-12 h-auto w-200">
+        <div className="p-12 h-auto">
           <div className="absolute top-6 right-6">
             <FontAwesomeIcon
               icon={faTimes}
@@ -115,9 +115,7 @@ const OverlayCard = ({ show, setSelectedShow }: CardProps) => {
           )}
         </div>
       </div>
-      <div className="h-200 p-12">
-        <h6>Episodes</h6>
-      </div>
+      <Episodes episodes={episodes} />
     </div>
   );
 };

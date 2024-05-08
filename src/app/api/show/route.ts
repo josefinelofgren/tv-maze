@@ -3,29 +3,55 @@ export async function GET(req: any) {
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.searchParams);
     const id = searchParams.get("id");
-    const apiUrl = `https://api.tvmaze.com/shows/${id}`;
+    const episodesApiUrl = `https://api.tvmaze.com/shows/${id}/episodes`;
+    const showApiUrl = `https://api.tvmaze.com/shows/${id}`;
 
-    const res = await fetch(apiUrl);
+    const [episodesResponse, showResponse] = await Promise.all([
+      fetch(episodesApiUrl),
+      fetch(showApiUrl),
+    ]);
 
-    if (!res.ok) {
-      throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
+    if (!episodesResponse.ok) {
+      throw new Error(
+        `Failed to fetch episodes data: ${episodesResponse.status} ${episodesResponse.statusText}`
+      );
     }
 
-    const data = await res.json();
+    if (!showResponse.ok) {
+      throw new Error(
+        `Failed to fetch show data: ${showResponse.status} ${showResponse.statusText}`
+      );
+    }
 
-    const filteredData = {
-      id: data.id,
-      name: data.name,
-      image: data.image,
-      language: data.langugage,
-      rating: data.rating.average,
-      length: data.runtime,
-      genres: [data.type, ...data.genres],
-      summary: data.summary,
-      premiered: data.premiered,
+    const episodesData = await episodesResponse.json();
+    const showData = await showResponse.json();
+
+    const filteredShowData = {
+      id: showData.id,
+      name: showData.name,
+      image: showData.image,
+      language: showData.language,
+      rating: showData.rating.average,
+      length: showData.runtime,
+      genres: [showData.type, ...showData.genres],
+      summary: showData.summary,
+      premiered: showData.premiered,
     };
 
-    return Response.json(filteredData, { status: 200 });
+    const filteredEpisodesData = episodesData.map((episodeData: any) => ({
+      id: episodeData.id,
+      name: episodeData.name,
+      image: episodeData.image,
+      season: episodeData.season,
+      number: episodeData.number,
+    }));
+
+    console.log(filteredEpisodesData);
+
+    return Response.json(
+      { episodes: filteredEpisodesData, show: filteredShowData },
+      { status: 200 }
+    );
   } catch (error) {
     return Response.error();
   }

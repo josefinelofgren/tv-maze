@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Dispatch, SetStateAction, useState } from "react";
+import Select from "../input-field/select";
 
 export interface Props {
   countryCode: string;
@@ -22,11 +23,7 @@ const CountrySelector = ({ countryCode, setCountryCode }: Props) => {
   ];
 
   return (
-    <select
-      onChange={onChange}
-      value={value}
-      className="input-field bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    >
+    <Select onChange={onChange} value={value}>
       {countries.map((country, index) => {
         return (
           <option key={index} value={country.locale}>
@@ -34,7 +31,7 @@ const CountrySelector = ({ countryCode, setCountryCode }: Props) => {
           </option>
         );
       })}
-    </select>
+    </Select>
   );
 };
 
