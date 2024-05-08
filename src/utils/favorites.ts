@@ -1,13 +1,17 @@
-export const saveAsFavorite = (showId: number) => {
+import { Card } from "@/types/types";
+
+export const saveAsFavorite = (show: Card) => {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-  if (!favorites.includes(showId)) {
-    favorites.push(showId);
+  if (!favorites.includes(show)) {
+    favorites.push(show);
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }
 };
 
-export const removeAsFavorite = (showId: number) => {
+export const removeAsFavorite = (show: Card) => {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-  const updatedFavorites = favorites.filter((id: number) => id !== showId);
+  const updatedFavorites = favorites.filter(
+    (item: Card) => item.id !== show.id
+  );
   localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 };

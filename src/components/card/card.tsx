@@ -3,32 +3,28 @@ import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { saveAsFavorite, removeAsFavorite } from "@/utils/favorites";
+import { Card as CardType } from "@/types/types";
 
-interface Props {
-  id: number;
-  image: { medium: string | null; originial: string | null } | null;
-  title: string;
-  genres: [];
-  length: number;
-}
-
-const Card = ({ id, image, title, genres, length }: Props) => {
+const Card = ({ id, image, title, genres, length }: CardType) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     const isAlreadyFavorite = favorites.some(
-      (item: { id: any }) => item.id === id
+      (item: CardType) => item.id === id
     );
+
     setIsFavorite(isAlreadyFavorite);
   }, [id]);
 
   const handleToggleFavorite = () => {
+    const showObject = { id, title, image, genres, length };
+
     if (!isFavorite) {
-      saveAsFavorite(id);
+      saveAsFavorite(showObject);
       setIsFavorite(true);
     } else {
-      removeAsFavorite(id);
+      removeAsFavorite(showObject);
       setIsFavorite(false);
     }
   };
@@ -39,7 +35,7 @@ const Card = ({ id, image, title, genres, length }: Props) => {
     <div className="max-w-xs rounded overflow-hidden shadow-lg h-full">
       <img
         className="w-full h-auto aspect-w-3 aspect-h-2 object-cover"
-        src={image && image.medium ? image.medium : defaultImage}
+        src={image && image.medium ? image.medium : ""}
         alt={title}
       />
       <div className="px-6 py-4 h-full flex flex-col justify-between">

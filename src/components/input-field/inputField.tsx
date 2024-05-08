@@ -34,7 +34,7 @@ const InputField = ({ placeholder, id, icon }: Props) => {
       {icon === "faSearch" && (
         <FontAwesomeIcon
           icon={faSearch}
-          className="absolute top-3 left-3 text-gray-400 pointer-events-none"
+          className="absolute top-3 left-3 text-gray-400 pointer-events-none text-xl"
         />
       )}
     </div>

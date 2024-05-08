@@ -1,14 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 
-const CountrySelector = () => {
-  const [value, setValue] = useState("US");
+export interface Props {
+  countryCode: string;
+  setCountryCode: Dispatch<SetStateAction<string>>;
+}
+
+const CountrySelector = ({ countryCode, setCountryCode }: Props) => {
+  const [value, setValue] = useState(countryCode);
 
   const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountryCode = event.target.value;
     setValue(selectedCountryCode);
-    localStorage.setItem("countryCode", selectedCountryCode);
+    setCountryCode(selectedCountryCode);
   };
 
   const countries = [
