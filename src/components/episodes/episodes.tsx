@@ -55,7 +55,10 @@ const Episodes = ({ episodes }: Props) => {
           </div>
         </div>
         {episodesBySeason[selectedSeason].map((episode) => (
-          <div className="flex items-center mt-2 p-4 border-b" key={episode.id}>
+          <div
+            className="flex items-center mt-2 p-4 border-b border-black-700"
+            key={episode.id}
+          >
             <p className="text-lg mr-6" style={{ width: "auto" }}>
               {episode.number}
             </p>

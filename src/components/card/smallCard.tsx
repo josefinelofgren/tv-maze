@@ -17,10 +17,12 @@ const Card = ({ item }: CardProps) => {
         }
         alt={item.name}
       />
-      <div className="px-6 py-4 h-full flex flex-col justify-between">
+      <div className="px-6 py-4 h-full flex flex-col justify-between bg-black-900">
         <div>
           <div className="font-bold text-sm mb-2">{item.name}</div>
-          <div className="text-xs mb-2">Release date: {item.airdate}</div>
+          <div className="text-xs mb-2 text-black-200">
+            Release date: {item.airdate}
+          </div>
         </div>
       </div>
     </div>

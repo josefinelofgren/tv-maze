@@ -56,7 +56,7 @@ const Shows = ({ shows }: ShowsProps) => {
     <>
       {selectedShow && selectedShow.show && selectedShow.episodes && (
         <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center">
-          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-90"></div>
           <div className="max-w-[900px] max-h-[700px] mx-auto z-10 !important overflow-y-auto">
             <OverlayCard
               selectedShow={selectedShow}

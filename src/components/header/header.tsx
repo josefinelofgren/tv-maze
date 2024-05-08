@@ -43,12 +43,15 @@ const Header = () => {
   };
 
   return (
-    <header id="header" className={"header bg-gray-800 text-white p-4"}>
+    <header
+      id="header"
+      className={"header bg-black text-white p-4 border-b border-black-700"}
+    >
       <div className="header__container flex items-center justify-between">
         <div className="flex items-center space-x-10">
           <p className="font-bold">TV Maze</p>
           <Link href="/">
-            <p className="text-sm">All shows</p>
+            <p className="text-xs">All shows</p>
           </Link>
         </div>
         <div className="flex items-center space-x-4">
@@ -59,7 +62,7 @@ const Header = () => {
               <FontAwesomeIcon
                 onClick={onClickSearch}
                 icon={faSearch}
-                className="text-white-500 cursor-pointer text-xl"
+                className="text-white-100 cursor-pointer text-xl"
               />
             )}
           </div>
@@ -67,7 +70,7 @@ const Header = () => {
             <Link href="/favorites">
               <FontAwesomeIcon
                 icon={faHeart}
-                className="text-white-500 cursor-pointer text-xl"
+                className="text-white-100 cursor-pointer text-xl"
               />
             </Link>
             {countFavorites > 0 && (

@@ -21,11 +21,11 @@ const Card = ({ item, onClick }: CardProps) => {
         }
         alt={item.name}
       />
-      <div className="px-6 py-4 h-full flex flex-col justify-between">
+      <div className="px-6 py-4 h-full flex flex-col justify-between bg-black-900">
         <div>
-          <div className="font-bold text-lg mb-2">{item.name}</div>
+          <p className="font-bold text-md mb-2">{item.name}</p>
           {item.genres && (
-            <p className="text-gray-500 text-sm">
+            <p className="text-black-200  text-xs">
               {item.genres.join(" \u2022 ")}
             </p>
           )}
