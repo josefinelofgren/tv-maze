@@ -30,12 +30,12 @@ export default function Page() {
   }, [shows]);
 
   useEffect(() => {
-    console.log(upcomingEpisodes);
-  }, [upcomingEpisodes]);
+    console.log(shows);
+  }, []);
 
   return (
     <>
-      {shows ? (
+      {shows && shows.length > 0 ? (
         <>
           <div>
             <p className="font-bold text-md mb-2">Favorited shows</p>
@@ -70,11 +70,11 @@ export default function Page() {
       ) : (
         <>
           <div className="mt-4">
-            <h1 className="text-center text-2xl text-gray-800 mt-8 font-bold">
+            <h1 className="text-center text-2xl text-white-100 mt-8 font-bold">
               No favorites added
             </h1>
             <Link href="/">
-              <p className="mt-4 text-center text-sm hover:underline text-blue-500 hover:underline cursor-pointer">
+              <p className="mt-4 text-center text-sm hover:underline text-blue-300 hover:underline cursor-pointer">
                 Back to all shows
               </p>
             </Link>

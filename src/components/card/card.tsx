@@ -1,5 +1,6 @@
 import { ShowDetailsType } from "@/types/types";
 import defaultImage from "./../../assets/no-image.svg";
+import Favorite from "../favorite/favorite";
 
 interface CardProps {
   item: ShowDetailsType;
