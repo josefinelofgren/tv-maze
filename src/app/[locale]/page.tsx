@@ -6,9 +6,9 @@ import { useEffect } from "react";
 
 const Page = () => {
   const router = useRouter();
+  const currentPathname = usePathname();
 
   useEffect(() => {
-    const currentPathname = usePathname();
     if (!currentPathname.endsWith("/browse")) {
       router.push(`${currentPathname}/browse`);
     }
