@@ -1,11 +1,8 @@
 import { IContext } from "@/types/context";
-import { getLocaleFromPathname } from "@/utils/locale/getLocale";
 import { createContext } from "react";
 
-const initialLocale = getLocaleFromPathname(window.location.pathname);
-
 export const defaultValue: IContext = {
-  locale: initialLocale,
+  locale: "global",
   countFavorites: 0,
   setLocale: () => {},
   setCountFavorites: () => {},
