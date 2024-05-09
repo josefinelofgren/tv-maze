@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EpisodeType } from "@/types/types";
 import Select from "../input-field/select";
 import defaultImage from "./../../assets/no-image.svg";
+import Image from "next/image";
 
 interface Props {
   episodes: EpisodeType[];
@@ -63,7 +64,7 @@ const Episodes = ({ episodes }: Props) => {
               {episode.number}
             </p>
             <div className="mr-4" style={{ maxWidth: "140px" }}>
-              <img
+              <Image
                 className="rounded w-full object-cover h-auto"
                 src={
                   episode.image && episode.image.original
@@ -73,6 +74,8 @@ const Episodes = ({ episodes }: Props) => {
                     : defaultImage.src
                 }
                 alt={episode.name}
+                width={200}
+                height={100}
               />
             </div>
             <div>

@@ -6,6 +6,7 @@ import Favorite from "../../favorite/favorite";
 import Rating from "../../rating/rating";
 import Episodes from "@/components/episodes/episodes";
 import defaultImage from "./../../../assets/no-image.svg";
+import Image from "next/image";
 
 interface CardProps {
   selectedShow: ExtendedShowDetailsType;
@@ -34,7 +35,7 @@ const OverlayCard = ({
         <div className="relative top-0 left-0 bg-black-900 rounded overflow-y-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
             <div>
-              <img
+              <Image
                 className="w-auto"
                 src={
                   show.image && show.image.original
@@ -42,6 +43,8 @@ const OverlayCard = ({
                     : defaultImage.src
                 }
                 alt={show.name}
+                width={400}
+                height={600}
               />
             </div>
             <div className="p-12 h-auto">

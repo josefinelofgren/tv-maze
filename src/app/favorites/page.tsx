@@ -8,7 +8,6 @@ import { Context } from "../context/context";
 import { updateFavoritesDataFromStorage } from "@/utils/favorites/favorites";
 import { ShowDetailsType, UpcomingEpisodesType } from "@/types/types";
 import { getUpcomingEpisodes } from "@/utils/episodes/getEpisodes";
-import Card from "@/components/card/card";
 import SmallCard from "@/components/card/smallCard";
 
 export default function Page() {
@@ -46,7 +45,7 @@ export default function Page() {
                   return (
                     <div key={index}>
                       <p className="font-bold text-md mb-2 mt-12">
-                        Upcoming episodes for "{shows[index].name}"
+                        Upcoming episodes for: {shows[index].name}
                       </p>
                       <Grid>
                         {episodes.map((episode, episodeIndex) => {
