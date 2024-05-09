@@ -4,7 +4,11 @@ export async function GET(req: any) {
     const searchParams = new URLSearchParams(url.searchParams);
     const country = searchParams.get("country");
     const today = new Date().toISOString().slice(0, 10);
-    const apiUrl = `https://api.tvmaze.com/schedule?country=${country}&date=${today}`;
+    let apiUrl = `https://api.tvmaze.com/schedule`;
+
+    if (country) {
+      apiUrl += `?country=${country}&date=${today}`;
+    }
 
     const res = await fetch(apiUrl);
 

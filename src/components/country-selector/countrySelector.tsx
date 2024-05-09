@@ -19,6 +19,7 @@ const CountrySelector = () => {
   };
 
   const countries = [
+    { key: "global", locale: null, title: "Global" },
     { key: "gb", locale: "GB", title: "United Kingdom" },
     { key: "us", locale: "US", title: "USA" },
   ];
@@ -28,7 +29,7 @@ const CountrySelector = () => {
       {countries.map((country, index) => {
         return (
           <option key={index} value={country.key}>
-            {country.title} {`(${country.locale})`}
+            {country.title} {country.locale && `(${country.locale})`}
           </option>
         );
       })}

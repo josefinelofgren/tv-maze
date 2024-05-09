@@ -6,10 +6,17 @@ export const getAllShows = async (
   setError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
-    const response = await fetch(`/api/show/?country=${countryCode}`);
+    let apiUrl = "/api/show";
+    if (countryCode !== "global") {
+      apiUrl += `/?country=${countryCode}`;
+    }
+
+    const response = await fetch(apiUrl);
+
     if (!response.ok) {
       throw new Error("Failed to fetch all shows");
     }
+
     const responseData = await response.json();
     setShows(responseData);
   } catch (error) {

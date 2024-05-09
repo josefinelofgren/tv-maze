@@ -11,6 +11,6 @@ export const getCountryCodeFromPathname = (pathname: string): string => {
   ) {
     return "us";
   } else {
-    return "us";
+    return "global";
   }
 };

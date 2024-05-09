@@ -47,6 +47,16 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Configuration and Localization
 
+The default locale of the application is set to Global English if no other locale parameter is added to the URL, or if locale can't be found. If the URL contains /uk or /gb, the locale is automatically set to GB English. If the URL contains /us the locale is automatically set to US English.
+
+### Locale Selection
+
+Users have the option to change the locale to suit their preferences. The locale selection feature is available in the application's header, allowing users to switch between different locales, such as UK/GB English.
+
+### Content Variation
+
+While the language remains constant (English), the content may vary based on the selected locale. For example, the application only displays TV shows available for the selected locale.
+
 ## Technical Overview
 
 ### API Integration
