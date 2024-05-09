@@ -11,6 +11,7 @@ const Page = () => {
 
   useEffect(() => {
     router.push(`${locale}/browse`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <></>;

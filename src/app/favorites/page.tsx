@@ -64,14 +64,14 @@ export default function Page() {
         </>
       ) : (
         <>
-          <div className="mt-4">
-            <h1 className="text-center text-2xl text-white-100 mt-8 font-bold">
+          <div className="mt-4 flex min-h-screen flex-col items-center">
+            <h2 className="text-center text-2xl mt-8 font-bold">
               No favorites added
-            </h1>
+            </h2>
             <Link href="/">
-              <p className="mt-4 text-center text-sm hover:underline text-blue-300 hover:underline cursor-pointer">
-                Back to all shows
-              </p>
+              <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-600">
+                Back to homepage
+              </button>
             </Link>
           </div>
         </>
