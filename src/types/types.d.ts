@@ -24,6 +24,7 @@ export interface EpisodeType {
   season: number;
   number: number;
   runtime: number;
+  summary: string;
 }
 
 export interface UpcomingEpisodesType {
@@ -33,6 +34,7 @@ export interface UpcomingEpisodesType {
   number: number;
   airdate: string;
   airtime: string;
+  summary: string;
 }
 
 export interface ExtendedShowDetailsType {

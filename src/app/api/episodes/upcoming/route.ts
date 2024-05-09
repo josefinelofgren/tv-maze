@@ -30,6 +30,7 @@ export async function GET(req: any) {
         image: episodeData.image,
         airdate: episodeData.airdate,
         airtime: episodeData.airtime,
+        summary: episodeData.summary,
       })
     );
 

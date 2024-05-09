@@ -75,7 +75,13 @@ const Episodes = ({ episodes }: Props) => {
                 alt={episode.name}
               />
             </div>
-            <p className="text-sm font-bold flex-grow">{episode.name}</p>
+            <div>
+              <p className="text-sm font-bold flex-grow">{episode.name}</p>
+              <p
+                className="text-white-900 text-xs"
+                dangerouslySetInnerHTML={{ __html: episode.summary }}
+              />
+            </div>
           </div>
         ))}
       </div>

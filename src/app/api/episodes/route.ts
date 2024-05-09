@@ -15,14 +15,13 @@ export async function GET(req: any) {
 
     const episodesData = await res.json();
 
-    console.log(episodesData);
-
     const filteredEpisodesData = episodesData.map((episodeData: any) => ({
       id: episodeData.id,
       name: episodeData.name,
       image: episodeData.image,
       season: episodeData.season,
       number: episodeData.number,
+      summary: episodeData.summary,
     }));
     return Response.json(filteredEpisodesData, { status: 200 });
   } catch (error) {
