@@ -1,14 +1,14 @@
 import { ShowType, ShowDetailsType } from "@/types/types";
 
 export const getAllShows = async (
-  countryCode: string,
+  locale: string,
   setShows: React.Dispatch<React.SetStateAction<ShowDetailsType[]>>,
   setError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
     let apiUrl = "/api/show";
-    if (countryCode !== "global") {
-      apiUrl += `/?country=${countryCode}`;
+    if (locale !== "global") {
+      apiUrl += `/?country=${locale}`;
     }
 
     const response = await fetch(apiUrl);

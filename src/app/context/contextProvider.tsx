@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const ContextProvider = ({ children }: Props) => {
-  const [countryCode, setCountryCode] = useState(defaultValue.countryCode);
+  const [locale, setLocale] = useState(defaultValue.locale);
   const [countFavorites, setCountFavorites] = useState(
     defaultValue.countFavorites
   );
@@ -14,9 +14,9 @@ const ContextProvider = ({ children }: Props) => {
   return (
     <Context.Provider
       value={{
-        countryCode,
+        locale,
         countFavorites,
-        setCountryCode,
+        setLocale,
         setCountFavorites,
       }}
     >

@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CountrySelector from "../country-selector/countrySelector";
+import LocaleSelector from "../locale-selector/localeSelector";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
@@ -13,7 +13,7 @@ const Header = () => {
   const [searchActive, setSearchActive] = useState(false);
   const searchRef = useRef(null);
 
-  const { countFavorites, countryCode, setCountFavorites, setCountryCode } =
+  const { countFavorites, locale, setCountFavorites, setLocale } =
     useContext(Context);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const Header = () => {
             )}
           </div>
           <div className="w-48">
-            <CountrySelector />
+            <LocaleSelector />
           </div>
         </div>
       </div>

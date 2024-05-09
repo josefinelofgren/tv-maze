@@ -1,6 +1,6 @@
 export interface IContext {
-  countryCode: string;
+  locale: string;
   countFavorites: number;
-  setCountryCode: React.Dispatch<React.SetStateAction<string>>;
+  setLocale: React.Dispatch<React.SetStateAction<string>>;
   setCountFavorites: React.Dispatch<React.SetStateAction<number>>;
 }

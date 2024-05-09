@@ -1,4 +1,4 @@
-export const getCountryCodeFromPathname = (pathname: string): string => {
+export const getLocaleFromPathname = (pathname: string): string => {
   const UK = ["gb", "uk"];
   const US = ["us"];
 

@@ -5,20 +5,20 @@ import Select from "../input-field/select";
 import { Context } from "@/app/context/context";
 import { useRouter } from "next/navigation";
 
-const CountrySelector = () => {
-  const { countryCode, setCountryCode } = useContext(Context);
+const LocaleSelector = () => {
+  const { locale, setLocale } = useContext(Context);
   const router = useRouter();
 
-  const [value, setValue] = useState(countryCode);
+  const [value, setValue] = useState(locale);
 
   const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountryCode = event.target.value;
     setValue(selectedCountryCode);
-    setCountryCode(selectedCountryCode);
+    setLocale(selectedCountryCode);
     router.push(`/${selectedCountryCode}/browse`);
   };
 
-  const countries = [
+  const locales = [
     { key: "global", locale: null, title: "Global" },
     { key: "gb", locale: "GB", title: "United Kingdom" },
     { key: "us", locale: "US", title: "USA" },
@@ -26,10 +26,10 @@ const CountrySelector = () => {
 
   return (
     <Select onChange={onChange} value={value}>
-      {countries.map((country, index) => {
+      {locales.map((locale, index) => {
         return (
-          <option key={index} value={country.key}>
-            {country.title} {country.locale && `(${country.locale})`}
+          <option key={index} value={locale.key}>
+            {locale.title} {locale.locale && `(${locale.locale})`}
           </option>
         );
       })}
@@ -37,4 +37,4 @@ const CountrySelector = () => {
   );
 };
 
-export default CountrySelector;
+export default LocaleSelector;

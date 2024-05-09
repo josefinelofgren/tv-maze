@@ -1,13 +1,13 @@
 import { IContext } from "@/types/context";
-import { getCountryCodeFromPathname } from "@/utils/country-code/getCountryCode";
+import { getLocaleFromPathname } from "@/utils/locale/getLocale";
 import { createContext } from "react";
 
-const initialCountryCode = getCountryCodeFromPathname(window.location.pathname);
+const initialLocale = getLocaleFromPathname(window.location.pathname);
 
 export const defaultValue: IContext = {
-  countryCode: initialCountryCode,
+  locale: initialLocale,
   countFavorites: 0,
-  setCountryCode: () => {},
+  setLocale: () => {},
   setCountFavorites: () => {},
 };
 

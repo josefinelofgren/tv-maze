@@ -7,10 +7,10 @@ import { Context } from "./context/context";
 const Page = () => {
   const router = useRouter();
 
-  const { countryCode } = useContext(Context);
+  const { locale } = useContext(Context);
 
   useEffect(() => {
-    router.push(`${countryCode}/browse`);
+    router.push(`${locale}/browse`);
   }, []);
 
   return <></>;

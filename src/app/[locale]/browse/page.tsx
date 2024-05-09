@@ -10,11 +10,11 @@ import { getAllShows } from "@/utils/shows/getShows";
 export default function Page() {
   const [shows, setShows] = useState<ShowDetailsType[]>([]);
   const [error, setError] = useState(false);
-  const { countryCode, setCountryCode } = useContext(Context);
+  const { locale, setLocale } = useContext(Context);
 
   useEffect(() => {
-    getAllShows(countryCode, setShows, setError);
-  }, [countryCode, setCountryCode]);
+    getAllShows(locale, setShows, setError);
+  }, [locale, setLocale]);
 
   return (
     <div>
