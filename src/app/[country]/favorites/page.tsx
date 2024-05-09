@@ -4,7 +4,7 @@ import Grid from "@/components/grid/grid";
 import Shows from "@/components/shows/shows";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../context/context";
+import { Context } from "../../context/context";
 import { updateFavoritesDataFromStorage } from "@/utils/favorites/favorites";
 import { ShowDetailsType, UpcomingEpisodesType } from "@/types/types";
 import { getUpcomingEpisodes } from "@/utils/episodes/getEpisodes";

@@ -1,32 +1,33 @@
 "use client";
 
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useContext, useState } from "react";
 import Select from "../input-field/select";
+import { Context } from "@/app/context/context";
+import { useRouter } from "next/navigation";
 
-export interface Props {
-  countryCode: string;
-  setCountryCode: Dispatch<SetStateAction<string>>;
-}
+const CountrySelector = () => {
+  const { countryCode, setCountryCode } = useContext(Context);
+  const router = useRouter();
 
-const CountrySelector = ({ countryCode, setCountryCode }: Props) => {
   const [value, setValue] = useState(countryCode);
 
   const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountryCode = event.target.value;
     setValue(selectedCountryCode);
     setCountryCode(selectedCountryCode);
+    router.push(`/${selectedCountryCode}/browse`);
   };
 
   const countries = [
-    { locale: "GB", title: "United Kingdom" },
-    { locale: "US", title: "USA" },
+    { key: "gb", locale: "GB", title: "United Kingdom" },
+    { key: "us", locale: "US", title: "USA" },
   ];
 
   return (
     <Select onChange={onChange} value={value}>
       {countries.map((country, index) => {
         return (
-          <option key={index} value={country.locale}>
+          <option key={index} value={country.key}>
             {country.title} {`(${country.locale})`}
           </option>
         );

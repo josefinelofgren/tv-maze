@@ -80,10 +80,7 @@ const Header = () => {
             )}
           </div>
           <div className="w-48">
-            <CountrySelector
-              countryCode={countryCode}
-              setCountryCode={setCountryCode}
-            />
+            <CountrySelector />
           </div>
         </div>
       </div>

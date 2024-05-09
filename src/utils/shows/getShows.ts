@@ -1,8 +1,8 @@
-import { ExtendedShowDetails, Show, ShowDetails } from "@/types/types";
+import { ShowType, ShowDetailsType } from "@/types/types";
 
 export const getAllShows = async (
   countryCode: string,
-  setShows: React.Dispatch<React.SetStateAction<ShowDetails[]>>,
+  setShows: React.Dispatch<React.SetStateAction<ShowDetailsType[]>>,
   setError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
@@ -19,7 +19,7 @@ export const getAllShows = async (
 
 export const getSelectedShowDetails = async (
   id: number,
-  setSelectedShowDetails: React.Dispatch<React.SetStateAction<Show | null>>,
+  setSelectedShowDetails: React.Dispatch<React.SetStateAction<ShowType | null>>,
   setError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
@@ -36,7 +36,7 @@ export const getSelectedShowDetails = async (
 
 export const getShowsBySearch = async (
   query: string | null,
-  setShows: React.Dispatch<React.SetStateAction<ShowDetails[]>>,
+  setShows: React.Dispatch<React.SetStateAction<ShowDetailsType[]>>,
   setError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {

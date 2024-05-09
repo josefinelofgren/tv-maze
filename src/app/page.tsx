@@ -1,13 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { Context } from "./context/context";
 
 const Page = () => {
   const router = useRouter();
 
+  const { countryCode } = useContext(Context);
+
   useEffect(() => {
-    router.push("/browse");
+    router.push(`${countryCode}/browse`);
   }, []);
 
   return <></>;

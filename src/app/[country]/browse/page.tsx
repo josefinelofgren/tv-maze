@@ -4,7 +4,7 @@ import Grid from "@/components/grid/grid";
 import Shows from "@/components/shows/shows";
 import { ShowDetailsType } from "@/types/types";
 import { useContext, useEffect, useState } from "react";
-import { Context } from "../context/context";
+import { Context } from "../../context/context";
 import { getAllShows } from "@/utils/shows/getShows";
 
 export default function Page() {

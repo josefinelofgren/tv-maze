@@ -1,6 +1,6 @@
-import { ShowDetails } from "@/types/types";
+import { ShowDetailsType } from "@/types/types";
 
-export const saveAsFavorite = (show: ShowDetails) => {
+export const saveAsFavorite = (show: ShowDetailsType) => {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   if (!favorites.includes(show)) {
     favorites.push(show);
@@ -8,16 +8,16 @@ export const saveAsFavorite = (show: ShowDetails) => {
   }
 };
 
-export const removeAsFavorite = (show: ShowDetails) => {
+export const removeAsFavorite = (show: ShowDetailsType) => {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   const updatedFavorites = favorites.filter(
-    (item: ShowDetails) => item.id !== show.id
+    (item: ShowDetailsType) => item.id !== show.id
   );
   localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 };
 
 export const updateFavoritesDataFromStorage = (
-  setShows: React.Dispatch<React.SetStateAction<ShowDetails[] | null>>
+  setShows: React.Dispatch<React.SetStateAction<ShowDetailsType[] | null>>
 ) => {
   const favoritesData = localStorage.getItem("favorites");
   if (favoritesData) {
@@ -26,7 +26,7 @@ export const updateFavoritesDataFromStorage = (
 };
 
 export const handleToggleFavorite = (
-  show: ShowDetails,
+  show: ShowDetailsType,
   isFavorite: boolean,
   setIsFavorite: React.Dispatch<React.SetStateAction<boolean>>,
   setCountFavorites: React.Dispatch<React.SetStateAction<number>>

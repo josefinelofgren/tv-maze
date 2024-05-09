@@ -1,6 +1,8 @@
 # TV Maze
 
-This web application integrates with the TVmaze Public REST API to provide users with information about TV shows. It's built using Next.js, TypeScript, and Tailwind CSS.
+This web application integrates with the TVmaze Public REST API to provide users with information about TV shows.
+
+It's built using Next.js, TypeScript and Tailwind CSS to create a robust, type-safe, and well-styled web application.
 
 ## ToC
 
@@ -12,14 +14,22 @@ This web application integrates with the TVmaze Public REST API to provide users
 - [Technical Overview](#technical-overview)
 
 ## Get Started
+
 To run the application locally, follow these steps:
 
 ### Prerequisites
+
 Make sure you have Node.js and npm installed on your machine.
 
 ### How to run
 
-First, run the development server:
+First, run:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -39,8 +49,10 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Technical Overview
 
-## Deploy on Vercel
+### API Integration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This web application integrates with the TVmaze Public REST API to fetch information about TV shows. The API is located at [https://api.tvmaze.com/](https://api.tvmaze.com/). Extensive documentation of the available endpoints can be found [here](https://www.tvmaze.com/api). By leveraging this API, the application dynamically retrieves show details, episode information, and more, providing users with a comprehensive TV show browsing experience.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### React Context
+
+The application utilizes React Context to manage global state and share data across components efficiently. This allows for centralized state management, reducing prop drilling and making it easier to maintain and update application-wide data. React Context enables seamless communication between components, enhancing the overall user experience.
