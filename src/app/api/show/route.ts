@@ -17,12 +17,20 @@ export async function GET(req: any) {
     }
 
     const data = await res.json();
-    const filteredData = data.map((item: any) => ({
-      id: item.show.id,
-      name: item.show.name,
-      image: item.show.image,
-      genres: [item.show.type, ...item.show.genres],
-    }));
+
+    const idSet = new Set();
+    const filteredData = data.reduce((acc: any[], item: any) => {
+      if (!idSet.has(item.show.id)) {
+        idSet.add(item.show.id);
+        acc.push({
+          id: item.show.id,
+          name: item.show.name,
+          image: item.show.image,
+          genres: [item.show.type, ...item.show.genres],
+        });
+      }
+      return acc;
+    }, []);
 
     return Response.json(filteredData, { status: 200 });
   } catch (error) {
