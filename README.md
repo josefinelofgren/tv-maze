@@ -12,6 +12,7 @@ It's built using Next.js, TypeScript and Tailwind CSS to create a robust, type-s
   - [How to run](#how-to-run)
 - [Configuration and Localization](#configuration-and-localization)
 - [Technical Overview](#technical-overview)
+- [Deployment](#deployment)
 
 ## Get Started
 
@@ -66,3 +67,30 @@ This web application integrates with the TVmaze Public REST API to fetch informa
 ### React Context
 
 The application utilizes React Context to manage global state and share data across components efficiently. This allows for centralized state management, reducing prop drilling and making it easier to maintain and update application-wide data. React Context enables seamless communication between components, enhancing the overall user experience.
+
+## Deployment
+
+### Deploying to GitHub Pages
+
+To deploy TV Maze web application to GitHub Pages, follow these steps:
+
+1. **Update the `homepage` field in `package.json`:** Ensure that the `homepage` field in the `package.json` file reflects the correct URL where the application will be hosted. For example:
+   ```json
+   "homepage": "http://josefinelofgren.github.io/tv-maze",
+
+2. **Build the application**
+ Before deploying, you need to build the application for production. Run the following command:
+
+```bash
+npm run build
+```
+
+3. **Deploy to Github Pages**
+Once the build process completes, you can deploy the application to GitHub Pages using the deploy script defined in package.json. Run the following command:
+
+```bash
+npm run deploy
+```
+
+4. **Verify deployment**
+After the deployment script finishes running, visit the URL specified in the homepage field of the package.json in your web browser to verify that the application is live.
